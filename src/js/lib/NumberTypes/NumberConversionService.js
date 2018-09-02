@@ -1,5 +1,8 @@
-class NumberConversionService {
+const INumberConversionService = require('./INumberConversionService');
+
+class NumberConversionService extends INumberConversionService {
     constructor() {
+        super();
     }
 
     decimalListToBinary(listOfDecimalNumbers){
