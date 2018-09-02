@@ -12,6 +12,14 @@ class Binary extends INumber {
     toDecimal(){
        throw Error("Not implemented.")
     }
+
+    toBinary(){
+        return `${this.number}`;
+    };
+
+    toHexadecimal(){
+        throw Error("Not implemented.");
+    };
 }
 
 module.exports = Binary;
