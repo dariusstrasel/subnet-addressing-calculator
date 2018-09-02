@@ -1,13 +1,15 @@
 const NumberConversionService = require('../NumberTypes/NumberConversionService');
-const Decimal = require('../NumberTypes/Decimal');
+const NumberFactory = require("../NumberTypes/NumberFactory");
 
 class IpAddress {
-    constructor(octetOne, octetTwo, octetThree, octetFour) {
-        this.octetOne = new Decimal(octetOne);
-        this.octetTwo = new Decimal(octetTwo);
-        this.octetThree = new Decimal(octetThree);
-        this.octetFour = new Decimal(octetFour);
+    constructor(fourOctetsList) {
+        this.numberFactory = new NumberFactory();
         this.numberConversionService = new NumberConversionService();
+
+        this.octetOne = this.numberFactory.create(fourOctetsList[0], "decimal");
+        this.octetTwo = this.numberFactory.create(fourOctetsList[1], "decimal");
+        this.octetThree = this.numberFactory.create(fourOctetsList[2], "decimal");
+        this.octetFour = this.numberFactory.create(fourOctetsList[3], "decimal");
     }
 
     get addressClassType() {
