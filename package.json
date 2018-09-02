@@ -1,0 +1,16 @@
+{
+  "name": "javascriptbasenumberconverter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "BinaryConverter.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Darius Strasel @dariusstrasel",
+  "license": "MIT",
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-preset-env": "^1.7.0",
+    "jest": "^23.5.0"
+  }
+}
