@@ -18,6 +18,10 @@ class Decimal extends INumber {
         return new Binary(this.calculateBinaryString());
     }
 
+    toHexadecimal(){
+        throw Error("Not implemented.");
+    };
+
     calculateBinaryString()
     {
         var quotient = this.number;

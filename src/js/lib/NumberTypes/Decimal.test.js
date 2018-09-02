@@ -14,3 +14,15 @@ test('toBinary converts 128 to 10000000', () => {
     var expectedValue = new Binary("10000000");
     expect(subject.toBinary()).toEqual(expectedValue);
 });
+
+test('toHexadecimal throws error', () => {
+    var subject = new Decimal(10);
+    expect(() => {
+        subject.toHexadecimal();
+    }).toThrow();
+});
+
+test('toNumber returns plain javascript number object.', () => {
+    var subject = new Decimal(10);
+    expect(subject.toNumber()).toEqual(10);
+});
