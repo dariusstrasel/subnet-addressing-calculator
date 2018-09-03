@@ -20,6 +20,10 @@ class IpAddress {
         return `${this.octetOne.toString()}.${this.octetTwo.toString()}.${this.octetThree.toString()}.${this.octetFour.toString()}`;
     }
 
+    toDecimal() {
+        return `${this.octetOne.toDecimal()}.${this.octetTwo.toDecimal()}.${this.octetThree.toDecimal()}.${this.octetFour.toDecimal()}`;
+    }
+
     toListOfOctets() {
         return [this.octetOne, this.octetTwo, this.octetThree, this.octetFour];
     }
@@ -55,7 +59,7 @@ class IpAddress {
             case "B":
                 hostBits = 16;
                 break;
-            case "B":
+            case "C":
                 hostBits = 8;
                 break;
             default:
