@@ -20,12 +20,21 @@ class IpAddress {
         return `${this.octetOne.toString()}.${this.octetTwo.toString()}.${this.octetThree.toString()}.${this.octetFour.toString()}`;
     }
 
-    toListOfDecimalOctets() {
+    toDecimal() {
+        return `${this.octetOne.toDecimal()}.${this.octetTwo.toDecimal()}.${this.octetThree.toDecimal()}.${this.octetFour.toDecimal()}`;
+    }
+
+    toListOfOctets() {
         return [this.octetOne, this.octetTwo, this.octetThree, this.octetFour];
     }
 
     toBinary() {
-        return this.numberConversionService.decimalListToBinary(this.toListOfDecimalOctets());
+        return this.numberConversionService.decimalListToBinary(this.toListOfOctets());
+    }
+
+    convertToBinary() {
+        // TODO: Convert class properties instead of returning new array.
+        return this.numberConversionService.decimalListToBinary(this.toListOfOctets());
     }
 
     calculateAddressClassType() {
@@ -39,6 +48,25 @@ class IpAddress {
             classType = "C";
         
         return classType;
+    }
+
+    get classHostBitCount() {
+        var hostBits;
+        switch (this.addressClassType) {
+            case "A":
+                hostBits = 24;
+                break;
+            case "B":
+                hostBits = 16;
+                break;
+            case "C":
+                hostBits = 8;
+                break;
+            default:
+                hostBits = 0;
+        }
+
+        return hostBits;
     }
 }
 
