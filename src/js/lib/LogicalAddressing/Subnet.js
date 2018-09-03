@@ -5,11 +5,12 @@ class Subnet {
     }
 
     get subnetId(){
-        return this.calculateBitWiseAnd(this.iPAddress.toBinary(), this.subnetMask.toBinary());
+        return this.calculateBitWiseAnd(this.iPAddress.toBinary(), this.subnetMask.toBinary()).toDecimal();
     }
 
     get subnetBits(){
-        return 32 - this.iPAddress.classHostBitCount
+        var subnetBitCount = this.subnetMask.prefixLengthNotation - this.networkBits;
+        return subnetBitCount > 0 ? subnetBitCount : 0;
     }
 
     get subnetCount(){
@@ -17,15 +18,26 @@ class Subnet {
     }
 
     get hostBits(){
-        return 
+        var hostBitFormula = 32 - this.networkBits - this.subnetBits;
+        return hostBitFormula > 0 ? hostBitFormula : 0;
+    }
+
+    get networkBits(){
+        return 32 - this.iPAddress.classHostBitCount
     }
 
     calculateBitWiseAnd(bitGroupOne, bitGroupTwo)
     {
         var bitString = "";
 
-        bitGroupOne.forEach(groupOneElement => {
-            bitGroupTwo.forEach(groupTwoElement => {
+        bitGroupOne = bitGroupOne.split(".").join("").split("");
+        bitGroupTwo = bitGroupTwo.split(".").join("").split("");
+
+        for (let index = 0; index < bitGroupOne.length; index++) {
+            const groupOneElement = bitGroupOne[index];
+            for (let indexerTwo = 0; indexerTwo < bitGroupOne.length; indexerTwo++) {
+                const groupTwoElement = bitGroupTwo[index];
+
                 if(groupOneElement == 1 && groupTwoElement == 1)
                 {
                     bitString = `${bitString}1`;
@@ -33,8 +45,8 @@ class Subnet {
                 else{
                     bitString = `${bitString}0`;
                 }
-            });
-        });
+            }
+        }
 
         return bitString;
     }
