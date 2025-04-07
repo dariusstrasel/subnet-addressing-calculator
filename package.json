@@ -4,7 +4,8 @@
   "description": "",
   "main": "BinaryConverter.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "build": "webpack"
   },
   "author": "Darius Strasel @dariusstrasel",
   "license": "MIT",
