@@ -2,7 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    entry: './src/js/components/index.js', // JS entry point (adjust according to your file structure)
+    entry: './src/js/components/index.js',
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: '[name].[contenthash].js', // Generate unique file names for caching
@@ -11,13 +11,14 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.js$/, // Process JavaScript files
-                exclude: /node_modules/,
-                use: {
-                    loader: 'babel-loader'
-                }
+                test: /\.css$/i,
+                use: ['style-loader', 'css-loader'],
             },
-        ]
+            {
+                test: /\.html$/i,
+                use: ['html-loader'],
+            },
+        ],
     },
     plugins: [
         new HtmlWebpackPlugin({
@@ -26,5 +27,11 @@ module.exports = {
             inject: 'body', // Inject scripts at the end of the <body> tag
         }),
     ],
-    mode: 'development', // Use 'production' for production builds
+    devServer: {
+        static: {
+            directory: path.join(__dirname, 'src'), // Serve static files from 'src'
+        },
+        compress: true,
+        port: 63342,
+    },
 };
