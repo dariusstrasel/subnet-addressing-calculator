@@ -2,15 +2,33 @@
   "name": "javascriptbasenumberconverter",
   "version": "1.0.0",
   "description": "",
+  "homepage": "https://dariusstrasel.github.io/subnet-addressing-calculator/",
   "main": "BinaryConverter.js",
   "scripts": {
-    "test": "jest"
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "test": "jest",
+    "build": "webpack",
+    "start": "webpack serve"
   },
   "author": "Darius Strasel @dariusstrasel",
   "license": "MIT",
   "devDependencies": {
+    "@babel/core": "^7.26.10",
+    "@babel/preset-env": "^7.26.9",
+    "@babel/preset-react": "^7.26.3",
     "babel": "^6.23.0",
+    "babel-loader": "^10.0.0",
     "babel-preset-env": "^1.7.0",
-    "jest": "^23.5.0"
+    "css-loader": "^7.1.2",
+    "gh-pages": "^6.3.0",
+    "html-loader": "^5.1.0",
+    "html-webpack-plugin": "^5.6.3",
+    "jest": "^23.5.0",
+    "react-dom": "^19.1.0",
+    "style-loader": "^4.0.0",
+    "webpack": "^5.99.1",
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "^5.2.1"
   }
 }
