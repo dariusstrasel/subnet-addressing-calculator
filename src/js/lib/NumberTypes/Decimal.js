@@ -6,6 +6,10 @@ class Decimal extends INumber {
         super(number);
     }
 
+    toDecimal(){
+        return this.number;
+    }
+
     toString(){
         return this.number;
     }
