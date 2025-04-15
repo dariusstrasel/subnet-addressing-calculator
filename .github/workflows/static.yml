@@ -36,6 +36,14 @@ jobs:
         with:
           path: './dist'
 
+  test:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Run Jest tests
+        run: npm test
+
   deploy:
     environment:
       name: github-pages
