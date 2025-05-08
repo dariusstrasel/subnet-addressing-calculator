@@ -42,7 +42,7 @@ jobs:
 
     steps:
       - name: Navigate to correct directory
-        run: cd subnet-addressing-calculator tests
+        run: cd subnet-addressing-calculator
       - name: Run Jest
         run: npm test
 
