@@ -41,7 +41,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Run Jest tests
+      - name: Navigate to correct directory
+        run: cd subnet-addressing-calculator tests
+      - name: Run Jest
         run: npm test
 
   deploy:
