@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     mode: 'development',
@@ -33,11 +34,19 @@ module.exports = {
         ],
     },
     plugins: [
+        new CopyWebpackPlugin({
+            patterns: [
+                {
+                    from: 'package.json',
+                    to: './dist'
+                }
+            ]
+        }),
         new HtmlWebpackPlugin({
             template: './src/html/index.html', // Your base index.html file
             filename: 'index.html', // The output HTML file
             inject: 'body', // Inject scripts at the end of the <body> tag
-        }),
+        })
     ],
     devServer: {
         static: {
