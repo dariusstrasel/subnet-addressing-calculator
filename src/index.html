@@ -1,0 +1,18 @@
+<html>
+
+    <head>
+        <title>Subnet Addressing Calculator</title>
+    </head>
+    <body>
+    <script>
+        // Load content from another HTML file
+        fetch('html/index.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('content').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading the HTML file:', error));
+    </script>
+
+    </body>
+</html>
